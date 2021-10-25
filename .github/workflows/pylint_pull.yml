@@ -1,9 +1,10 @@
-name: run-on-pull-request
+name: Run-on-pull-request
 on: [pull_request]
 jobs:
   trigger-on-pull:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Begin"
       - name: "Check out repository code"
       - uses: actions/checkout@v2
       - run: echo "Trigger on a changed factorial.py only"
