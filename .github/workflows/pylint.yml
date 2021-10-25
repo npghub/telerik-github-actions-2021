@@ -1,59 +1,34 @@
-name: Deployment-of-a-python-app-in-parallel
+name: Telerik-Github-Actions-Practice
+
 on: [push]
 jobs:
-  build-and-deploy01:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This has been triggered by ${{ github.event_name }}"
-      - run: echo "This First job is running on ${{ runner.os }}"
-      - name: "Check out repository code(first)"
-        uses: actions/checkout@v2
-      - name: "Set up Python 3.9(first)"
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: "Install deps(first)"
-        run: |
-          python -m pip install --upgrade pip
-          pip install pylint
-      - name: "Lint with pylint(first)"
-        run: |
-          python lint_test.py
-      - name: "Build container(first)"
-        run: |
-          echo "Builder container image...(first)"
-          sleep 3
-      - name: "Deploying to cluster...(first)"
-        run: |
-          echo "Deploying to cluster...(first)"
-          sleep 2
-          echo "Container deployed.(first)"
-      - run: echo "This First job status is ${{ job.status }}"
-  build-and-deploy02:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "This has been triggered by ${{ github.event_name }}"
-      - run: echo "This Second job is running on ${{ runner.os }}"
-      - name: "Check out repository code(second)"
-        uses: actions/checkout@v2
-      - name: "Set up Python 3.9(second)"
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: "Install deps(second)"
-        run: |
-          python -m pip install --upgrade pip
-          pip install pylint
-      - name: "Lint with pylint(second)"
-        run: |
-          python lint_test.py
-      - name: "Build container(second)"
-        run: |
-          echo "Builder container image..."
-          sleep 3
-      - name: "Deploying to cluster...(second)"
-        run: |
-          echo "Deploying to cluster...(second)"
-          sleep 2
-          echo "Container deployed.(second)"
-      - run: echo "This Second job status is ${{ job.status }}"
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+    - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+        pip install pycodestyle
+    - name: Lint with pylint
+      run: |
+        python lint_test.py
+    - name: Style with pycodestyle
+      run: |
+        pycodestyle *.py
+    - name: Unit testing
+      run: |
+        python3 -m doctest factorial.py
+    - name: Build container
+      run: echo "Building container iamge"
+    - name: Deploy
+      run: echo "Deploying to cluster"
