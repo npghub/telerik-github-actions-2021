@@ -1,4 +1,4 @@
-name: Run-on-pull-request
+name: Run-On-Pull-Request
 on: [pull_request]
 jobs:
   trigger-on-pull:
