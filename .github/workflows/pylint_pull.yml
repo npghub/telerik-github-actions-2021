@@ -9,4 +9,4 @@ jobs:
         uses: actions/checkout@v2
       - name: "Check only for factorial.py"
         run: echo "Trigger on a changed factorial.py only"
-        path: "factorial.py"
+        paths: "factorial.py"
