@@ -4,9 +4,9 @@ jobs:
   trigger-on-pull:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Begin"
       - name: "Check out repository code"
-        run: echo "Begin"
         uses: actions/checkout@v2
       - name: "Check only for factorial.py"
         run: echo "Trigger on a changed factorial.py only"
-        path: "factorial.py"
+      - path: "factorial.py"
