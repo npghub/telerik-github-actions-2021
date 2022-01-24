@@ -1,6 +1,6 @@
 import time
 final_list = []
-# comment to trigger file change
+# comment to trigger file change.
 
 
 def factorial(n):
